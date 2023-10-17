@@ -1,0 +1,52 @@
+---
+- name: Configure a reverse proxy server
+  hosts: "{{ target_host }}"
+  remote_user: "{{ target_user }}"
+  become: true
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Compute the repo path
+      set_fact:
+        local_repo_path: "{{ playbook_dir | dirname }}"
+
+    - name: Get this git repo onto the server
+      synchronize:
+        src: "{{ local_repo_path }}"
+        dest: /root
+
+    - name: Link the nginx conf
+      file:
+        path: /etc/nginx/sites-available
+        src: /root/charmella-website/charmella.nginx
+        state: link
+      notify:
+        - Restart nginx
+      when: 0 > 1
+
+    - name: Set up the web-content mount at /www
+      lineinfile:
+        path: /etc/fstab
+        state: present
+        line: "{{ item }}"
+      with_lines:
+        - cat "{{ local_repo_path }}/fstab-append"
+      register: fstab_changed
+      changed_when: fstab_changed.changed
+
+    - name: Mount /www
+      shell: mkdir -p /www/html/charmella && mount /www/html/charmella
+      when: fstab_changed.changed
+
+  handlers:
+    - name: Restart sshd
+      service:
+        name: sshd
+        state: restarted
+
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
