@@ -1,4 +1,4 @@
 # Bind mount to the web content.
 # Note that a symlink is not enough, as /root
 # is not openable (aka -x) to nginx.
-/root/charmella-website/www /www/html/charmella none bind 0 0
+/root/charmella-website/hugo/public /www/html/charmella none bind 0 0
