@@ -32,7 +32,7 @@
         state: present
         line: "{{ item }}"
       with_lines:
-        - cat "{{ local_repo_path }}/fstab-append"
+        - grep -v "^[[:space:]]*#" "{{ local_repo_path }}/fstab-append"
       register: fstab_changed
       changed_when: fstab_changed.changed
 
