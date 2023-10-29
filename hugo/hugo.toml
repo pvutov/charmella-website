@@ -130,8 +130,8 @@ theme = 'hugo-universal-theme'
 
     dropdown_mouse_over = false
 
-    disabled_logo = false
-    logo_text = "Charmella"
+    disabled_logo = true
+    logo_text = "Pratete mi logo i 6te go sloja tuk"
 
     logo = "img/logo.png"
     logo_small = "img/logo-small.png"
