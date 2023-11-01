@@ -19,12 +19,11 @@
 
     - name: Link the nginx conf
       file:
-        path: /etc/nginx/sites-available
+        path: /etc/nginx/conf.d/charmella.conf
         src: /root/charmella-website/charmella.nginx
         state: link
       notify:
         - Restart nginx
-      when: 0 > 1
 
     - name: Set up the web-content mount at /www
       lineinfile:
@@ -36,7 +35,7 @@
       register: fstab_changed
       changed_when: fstab_changed.changed
 
-    - name: Mount /www
+    - name: Mount /www/html/charmella
       shell: mkdir -p /www/html/charmella && mount /www/html/charmella
       when: fstab_changed.changed
 

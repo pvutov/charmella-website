@@ -1,0 +1,31 @@
+server {
+    server_name charmella.net www.charmella.net;
+    location / {
+        index index.html;
+        autoindex on;
+        root /www/html/charmella/;
+    }
+
+    #listen [::]:443 ssl ipv6only=off; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/charmella.net/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/charmella.net/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = www.charmella.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    if ($host = charmella.net) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    listen [::]:80;
+
+    server_name charmella.net www.charmella.net;
+    return 404; # managed by Certbot
+}
