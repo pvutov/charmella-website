@@ -12,9 +12,9 @@ theme = 'hugo-universal-theme'
     cols = 3 # Default: 3, Available values 2,3,4,6
 
 [[menu.main]]
-    name       = "Ценоразпис?"
+    name       = "Ценоразпис"
     identifier = "menu.pricing"
-    url        = "/img/template-easy-customize.png"
+    url        = "/pricing"
     weight     = 3
 
 [[menu.main]]
