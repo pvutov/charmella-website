@@ -1,5 +1,6 @@
 baseURL = 'https://pvutov.com'
 languageCode = 'en-us'
+defaultContentLanguage = 'bg'
 title = 'Charmella Wellness Studio'
 
 theme = 'hugo-universal-theme'
