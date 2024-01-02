@@ -62,7 +62,7 @@ theme = 'hugo-universal-theme'
     enable = true
     text = """<p class="hidden-sm hidden-xs">Свържете се с нас на 0877 72 79 83 или
 0878 54 94 50.</p>
-      <p class="hidden-md hidden-lg"><a href="tel:+420 777 555 333" data-animate-hover="pulse"><i class="fas fa-phone"></i></a>
+      <p class="hidden-md hidden-lg"><a href="tel:+359 877 72 79 83" data-animate-hover="pulse"><i class="fas fa-phone"></i></a>
       <a href="mailto:charmellamassagestudio@gmail.com" data-animate-hover="pulse"><i class="fas fa-envelope"></i></a>
       </p>
       """
