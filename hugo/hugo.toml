@@ -123,7 +123,7 @@ theme = 'hugo-universal-theme'
     enableRecaptchaInContactForm = false
     googleRecaptchaKey = "site_key_for_google_recaptcha"
 
-    #about_us = "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>"
+    about_us = "Ние сме масажни терапевти с многогодишен опит."
     copyright = "Copyright (c) 2023, Масажно Студио Charmella"
 
     # Format dates with Go's time formatting
